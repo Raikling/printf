@@ -5,7 +5,7 @@ int main(void)
    
    
 
-  ft_printf("%d", -6000023);
-  printf("\n%d", -6000023);
+  ft_printf("%c %c %c", 'a', 'b', 'c');
+  printf("\n%c %c %c", 'a', 'b', 'c');
 
 }

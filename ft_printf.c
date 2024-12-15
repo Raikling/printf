@@ -1,26 +1,26 @@
 #include "ft_printf.h"
 
-static int	ft_conversion(const char spec, va_list *args, int *counter)
+static int	ft_conversion(const char spec, va_list args, int *counter)
 {
 	char	ch;
 
 	if (spec == 'c')
 	{
-		ch = (char)va_arg(*args, int);
+		ch = (char)va_arg(args, int);
 		ft_putchar(ch, counter);
 	}
 	else if (spec == 's')
-		ft_putstr(va_arg(*args, char *), counter);
+		ft_putstr(va_arg(args, char *), counter);
 	else if (spec == 'd' || spec == 'i')
-		ft_putnbr(va_arg(*args, int), counter);
+		ft_putnbr(va_arg(args, int), counter);
 	else if (spec == 'X')
-		ft_puthex(va_arg(*args, unsigned int), 1, counter);
+		ft_puthex(va_arg(args, unsigned int), 1, counter);
 	else if (spec == 'x')
-		ft_puthex(va_arg(*args, unsigned int), 0, counter);
+		ft_puthex(va_arg(args, unsigned int), 0, counter);
 	else if (spec == 'p')
-		ft_putptr(va_arg(*args, void *), counter);
+		ft_putptr(va_arg(args, void *), counter);
 	else if (spec == 'u')
-		ft_putnbr_unsigned(va_arg(*args, unsigned int), counter);
+		ft_putnbr_unsigned(va_arg(args, unsigned int), counter);
 	else if (spec == '%')
 		ft_putchar('%', counter);
 	else
@@ -44,7 +44,7 @@ int	ft_printf(const char *format, ...)
 			format++;
 			if (*format == '\0')
 				return (-1);
-			if (ft_conversion(*format, &args, &counter) == -1)
+			if (ft_conversion(*format, args, &counter) == -1)
 				return (-1);
 		}
 		else
